@@ -1,0 +1,6 @@
+{
+  "name": "CIS Impact Points & Excellence Portal",
+  "description": "Enterprise portal for tracking employee contributions, calculating impact points, awarding excellence and specialist badges, managing multi-level approvals, and measuring reusable asset value.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

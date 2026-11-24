@@ -1,0 +1,12 @@
+{
+  "name": "tech-mahindra-cis-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone offline HTML5, CSS3, and Vanilla JavaScript Tech Mahindra CIS Impact Points & Excellence Portal",
+  "scripts": {
+    "dev": "node -e \"const http=require('http'),fs=require('fs'),path=require('path');const m={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.json':'application/json','.txt':'text/plain; charset=utf-8'};const root=process.cwd();http.createServer((req,res)=>{const u=(req.url||'/').split('?')[0];const rel=u==='/'?'index.html':u.replace(/^\\/+/, '');const p=path.resolve(root,rel);if(!p.startsWith(root)||!fs.existsSync(p)||fs.statSync(p).isDirectory()){res.writeHead(404);res.end('Not found');return;}res.writeHead(200,{'Content-Type':m[path.extname(p).toLowerCase()]||'application/octet-stream','Cache-Control':'no-store'});fs.createReadStream(p).pipe(res);}).listen(Number(process.env.PORT)||3000,'0.0.0.0',()=>console.log('CIS Portal preview serving on port '+(process.env.PORT||3000)));\"",
+    "start": "npm run dev",
+    "build": "node -e \"const cp=require('child_process'),fs=require('fs');['data/seed-data.js',...fs.readdirSync('js').filter(f=>f.endsWith('.js')).map(f=>'js/'+f)].forEach(f=>cp.execFileSync(process.execPath,['--check',f],{stdio:'inherit'}));console.log('Standalone HTML/CSS/JS syntax check passed.');\"",
+    "lint": "npm run build"
+  }
+}
